@@ -1,0 +1,6 @@
+cc_library(
+    name = "hello",
+    srcs = ["src/hello.c"],
+    hdrs = ["src/hello.h"],
+    visibility = ["//visibility:public"],
+)
