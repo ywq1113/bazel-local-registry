@@ -1,0 +1,5 @@
+module(
+    name = "linux_syscall_support",
+    version = "2024.02.01",
+    compatibility_level = 1,
+)

@@ -1,8 +1,0 @@
-{
-    "integrity": "",
-    "strip_prefix": "breakpad-v2023.06.01",
-    "url": "https://github.com/google/breakpad/archive/refs/tags/v2023.06.01.tar.gz",
-    "patches": {
-        "module_dot_bazel.patch": ""
-    }
-}

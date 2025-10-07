@@ -1,0 +1,9 @@
+{
+  "url": "https://github.com/ywq1113/linux-syscall-support-mirror/archive/refs/tags/v2024.02.01.tar.gz",
+  "integrity": "sha256-tTIJgy3DN003ItvtK0uzdsX8gLD6/hNtT4ItG/Zfnng=",
+  "strip_prefix": "linux-syscall-support-mirror-2024.02.01",
+  "patches": {
+    "add_build_file.patch": ""
+  },
+  "patch_strip": 1
+}

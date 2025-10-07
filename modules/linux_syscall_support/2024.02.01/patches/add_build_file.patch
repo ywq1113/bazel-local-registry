@@ -1,0 +1,15 @@
+diff --git a/BUILD.bazel b/BUILD.bazel
+new file mode 100644
+index 0000000..3721edd
+--- /dev/null
++++ b/BUILD.bazel
+@@ -0,0 +1,9 @@
++cc_library(
++    name = "linux_syscall_support",
++    hdrs = glob(["*.h"]),
++    strip_include_prefix = ".",
++    include_prefix = "lss",
++    visibility = ["//visibility:public"],
++    copts = ["-std=c++17"],
++)
++
