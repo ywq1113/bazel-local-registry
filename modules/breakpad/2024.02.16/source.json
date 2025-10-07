@@ -1,0 +1,11 @@
+{
+    "url": "https://github.com/google/breakpad/archive/refs/tags/v2024.02.16.tar.gz",
+    "integrity": "sha256-sZQM2SMYIvHTMtF3ZFavqNRS5ZeZy+73BkGIXDlUeyg=",
+    "strip_prefix": "breakpad-2024.02.16",
+    "patches": {
+        "add_build_file.patch": "",
+        "linux_syscall_support.patch": "",
+        "fix_basictypes.patch": ""
+    },
+    "patch_strip": 1
+}

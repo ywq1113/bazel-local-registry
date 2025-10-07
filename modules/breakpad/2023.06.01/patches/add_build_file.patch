@@ -1,0 +1,85 @@
+diff --git a/BUILD.bazel b/BUILD.bazel
+new file mode 100644
+index 00000000..430f27e2
+--- /dev/null
++++ b/BUILD.bazel
+@@ -0,0 +1,79 @@
++package(default_visibility = ["//visibility:public"])
++
++# C++ 编译选项
++COPTS = [
++    "-std=c++17",
++    "-Wall",
++    "-Wextra",
++    "-Wno-unused-parameter",
++    "-Wno-missing-field-initializers",
++    "-DLINUX",
++]
++
++cc_library(
++    name = "breakpad_client",
++    srcs = glob([
++        "src/client/**/*.cc",
++        "src/common/**/*.cc",
++    ], exclude = [
++        "src/client/apple/**",
++        "src/client/ios/**",
++        "src/client/mac/**",
++        "src/client/windows/**",
++        "src/client/solaris/**",
++        "src/client/minidump_file_writer_unittest.cc",
++        "src/client/linux/sender/**",
++        "src/common/mac/**",
++        "src/common/windows/**",
++        "src/common/solaris/**",
++        "src/common/android/**",
++        "src/common/stabs_reader.cc",
++        "src/common/stabs_to_module.cc",
++        "src/common/linux/tests/**",
++        "src/common/tests/**",
++        "**/*_unittest.cc",
++        "**/*_test.cc",
++    ]),
++    hdrs = glob(["src/**/*.h"]),
++    includes = [
++        "src",
++        "src/common",
++        "src/google_breakpad",
++    ],
++    deps = [
++        "@linux_syscall_support//:linux_syscall_support",
++    ],
++    strip_include_prefix = "src",
++    include_prefix = "",
++    linkopts = ["-pthread"],
++    copts = COPTS,
++    linkstatic = True,
++)
++
++cc_library(
++    name = "breakpad_processor",
++    srcs = glob([
++        "src/processor/**/*.cc",
++    ]),
++    hdrs = glob([
++        "src/processor/**/*.h",
++        "src/google_breakpad/processor/*.h",
++    ]),
++    includes = ["src"],
++    copts = COPTS,
++    deps = [
++        ":breakpad_client",
++        "@linux_syscall_support//:linux_syscall_support",
++    ],
++)
++
++cc_binary(
++    name = "minidump_stackwalk",
++    srcs = ["src/processor/minidump_stackwalk.cc"],
++    deps = [
++       ":breakpad_processor",
++       "@linux_syscall_support//:linux_syscall_support",
++    ],
++    copts = COPTS,
++)
++
