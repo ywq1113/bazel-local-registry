@@ -1,0 +1,7 @@
+module(
+    name = "mini_chromium",
+    version = "2025.10.07",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "rules_cc", version = "0.1.3")
